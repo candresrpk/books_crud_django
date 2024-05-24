@@ -1,0 +1,72 @@
+{% extends '../base.html' %}
+
+
+{% block title %}About us{% endblock  %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{% url "library:create" %}"
+                role="button"
+                >Crear Libro</a
+            >
+            
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Libros</h4>
+            <div
+                class="table-responsive"
+            >
+                <table
+                    class="table table-primary"
+                >
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr class="">
+                                <td scope="row">{{book.id}}</td>
+                                <td>{{book.title}}</td>
+                                <td><img src="{{book.image.url}}" height="100" width="100" alt=""></td>
+                                <td>{{book.description}}</td>
+                                <td> <a
+                                    name=""
+                                    id=""
+                                    class="btn btn-info"
+                                    href="{% url "library:edit" book.id %}"
+                                    role="button"
+                                    >Editar</a
+                                >
+                                | <a
+                                    name=""
+                                    id=""
+                                    class="btn btn-danger"
+                                    href="{% url "library:delete" book.id %}"
+                                    role="button"
+                                    >Eliminar</a
+                                >
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock  %}
